@@ -4,8 +4,14 @@ import BigNumber from 'bignumber.js'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
 import { useInitialBlockTimestamp } from 'state/block/hooks'
 import { publicClient } from 'utils/wagmi'
-import { useRevenueSharingCakePoolContract, useRevenueSharingVeCakeContract } from '../../../hooks/useContract'
+import { WEEK } from 'config/constants/veCake'
+import {
+  useRevenueSharingCakePoolContract,
+  useRevenueSharingPoolGatewayContract,
+  useRevenueSharingVeCakeContract,
+} from '../../../hooks/useContract'
 import { useCurrentBlockTimestamp } from './useCurrentBlockTimestamp'
+import { poolStartWeekCursors } from '../config'
 
 interface RevenueSharingPool {
   balanceOfAt: string
@@ -29,6 +35,7 @@ export const useRevenueSharingProxy = (
   const { account, chainId } = useAccountActiveChain()
   const blockTimestamp = useInitialBlockTimestamp()
   const currentBlockTimestamp = useCurrentBlockTimestamp()
+  const gatewayContract = useRevenueSharingPoolGatewayContract()
 
   const { data } = useQuery({
     queryKey: ['/revenue-sharing-pool-for-cake', contract.address, contract.chain?.id, account],
@@ -53,12 +60,13 @@ export const useRevenueSharingProxy = (
         ]
 
         const client = publicClient({ chainId })
+        const poolLength = Math.ceil((blockTimestamp - poolStartWeekCursors[contract.address]) / WEEK / 52)
         const [revenueResult, claimResult] = await Promise.all([
           client.multicall({
             contracts: revenueCalls,
             allowFailure: false,
           }),
-          contract.simulate.claim([account]),
+          gatewayContract.simulate.claimMultiple([Array(poolLength).fill(contract.address), account]),
         ])
 
         return {
