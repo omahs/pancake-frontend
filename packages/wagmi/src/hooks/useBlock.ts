@@ -44,7 +44,7 @@ export function useWatchBlock({ chainId, enabled }: Params) {
   })
 
   useEffect(() => {
-    if (!initialBlock) {
+    if (!queryEnabled || !initialBlock) {
       return
     }
 
@@ -68,7 +68,7 @@ export function useWatchBlock({ chainId, enabled }: Params) {
     ) {
       queryClient.setQueryData(initialBlockTimestampQueryKey, Number(blockTimestamp))
     }
-  }, [chainId, initialBlock, queryClient])
+  }, [chainId, initialBlock, queryEnabled, queryClient])
 
   useWatchBlocks({
     chainId,
