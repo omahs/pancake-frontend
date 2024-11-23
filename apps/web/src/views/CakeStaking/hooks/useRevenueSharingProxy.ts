@@ -1,7 +1,6 @@
 import { ONE_WEEK_DEFAULT } from '@pancakeswap/pools'
 import { useQuery } from '@tanstack/react-query'
 import BigNumber from 'bignumber.js'
-import { useCurrentBlockTimestamp } from 'state/block/hooks'
 import { publicClient } from 'utils/wagmi'
 import { WEEK } from 'config/constants/veCake'
 import { useAccount } from 'wagmi'
@@ -11,6 +10,7 @@ import {
   useRevenueSharingVeCakeContract,
 } from '../../../hooks/useContract'
 import { poolStartWeekCursors } from '../config'
+import { useCurrentBlockTimestamp } from './useCurrentBlockTimestamp'
 
 interface RevenueSharingPool {
   balanceOfAt: string
@@ -32,7 +32,7 @@ export const useRevenueSharingProxy = (
   contract: ReturnType<typeof useRevenueSharingCakePoolContract | typeof useRevenueSharingVeCakeContract>,
 ) => {
   const { address: account } = useAccount()
-  const currentBlockTimestamp = useCurrentBlockTimestamp(contract.chain?.id)
+  const currentBlockTimestamp = useCurrentBlockTimestamp()
   const gatewayContract = useRevenueSharingPoolGatewayContract()
 
   const { data } = useQuery({
