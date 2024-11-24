@@ -73,6 +73,7 @@ export function useWatchBlock({ chainId, enabled }: Params) {
   useWatchBlocks({
     chainId,
     blockTag: 'latest',
+    emitOnBegin: true,
     enabled: queryEnabled,
     onBlock: (data) => {
       updateBlockQueryData(queryClient, chainId, data)
