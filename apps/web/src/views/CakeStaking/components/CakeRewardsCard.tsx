@@ -430,18 +430,18 @@ const ClaimButton: React.FC<{
   const { account, chainId } = useAccountActiveChain()
   const contract = useRevenueSharingPoolGatewayContract()
   const { fetchWithCatchTxError, loading: isPending } = useCatchTxError()
-  const blockTimestamp = useInitialBlockTimestamp()
+  const currentBlockTimestamp = useCurrentBlockTimestamp()
 
   const isReady = useMemo(() => new BigNumber(availableClaim).gt(0) && !isPending, [availableClaim, isPending])
 
   const handleClaim = useCallback(async () => {
     try {
-      if (!account || !chainId || !blockTimestamp) return
+      if (!account || !chainId || !currentBlockTimestamp) return
 
       const cakePoolAddress = getRevenueSharingCakePoolAddress(chainId)
-      const cakePoolLength = Math.ceil((blockTimestamp - poolStartWeekCursors[cakePoolAddress]) / WEEK / 52)
+      const cakePoolLength = Math.ceil((currentBlockTimestamp - poolStartWeekCursors[cakePoolAddress]) / WEEK / 52)
       const veCakeAddress = getRevenueSharingVeCakeAddress(chainId)
-      const veCakePoolLength = Math.ceil((blockTimestamp - poolStartWeekCursors[veCakeAddress]) / WEEK / 52)
+      const veCakePoolLength = Math.ceil((currentBlockTimestamp - poolStartWeekCursors[veCakeAddress]) / WEEK / 52)
 
       const revenueSharingPools = [
         ...Array(cakePoolLength).fill(cakePoolAddress),
@@ -473,7 +473,7 @@ const ClaimButton: React.FC<{
     onDismiss,
     t,
     toastSuccess,
-    blockTimestamp,
+    currentBlockTimestamp,
   ])
 
   return (
