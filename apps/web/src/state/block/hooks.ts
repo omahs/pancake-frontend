@@ -60,7 +60,7 @@ export function useCurrentBlockTimestamp(chainId?: number) {
   return timestamp
 }
 
-export const useChainCurrentBlock = (chainId: number) => {
+export const useChainCurrentBlock = (chainId?: number) => {
   const { chainId: activeChainId } = useActiveChainId()
   const activeChainBlockNumber = useCurrentBlock()
   const isTargetDifferent = Boolean(chainId && activeChainId !== chainId)
