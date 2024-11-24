@@ -10,5 +10,5 @@ export const useCurrentBlockTimestamp = () => {
   const isBscNetwork = verifyBscNetwork(chainId)
   const timestamp = useBlockTimestamp(!isBscNetwork ? ChainId.BSC : undefined)
 
-  return timestamp ?? dayjs().unix()
+  return timestamp ?? 0
 }
