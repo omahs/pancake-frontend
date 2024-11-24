@@ -49,7 +49,7 @@ export function useWatchBlock({ chainId, enabled }: Params) {
     }
 
     const { number: blockNumber, timestamp: blockTimestamp } = initialBlock
-    queryClient.setQueryData(getBlockNumberQueryKey(chainId), blockNumber)
+    updateBlockQueryData(queryClient, chainId, initialBlock)
 
     const initialBlockNumberQueryKey = getInitialBlockNumberQueryKey(chainId)
     if (
@@ -73,7 +73,6 @@ export function useWatchBlock({ chainId, enabled }: Params) {
   useWatchBlocks({
     chainId,
     blockTag: 'latest',
-    emitOnBegin: true,
     enabled: queryEnabled,
     onBlock: (data) => {
       updateBlockQueryData(queryClient, chainId, data)
