@@ -1,5 +1,11 @@
 # @pancakeswap/sdk
 
+## 6.0.0
+
+### Major Changes
+
+- 0034944: Stableswap config connect with API
+
 ## 5.8.9
 
 ### Patch Changes

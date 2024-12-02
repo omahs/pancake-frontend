@@ -1,6 +1,6 @@
 {
   "name": "@pancakeswap/farms",
-  "version": "1.0.81",
+  "version": "2.0.0",
   "sideEffects": false,
   "private": true,
   "scripts": {

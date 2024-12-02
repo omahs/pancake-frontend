@@ -1,5 +1,23 @@
 # @pancakeswap/smart-router
 
+## 7.0.0
+
+### Major Changes
+
+- 0034944: Stableswap config connect with API
+
+### Patch Changes
+
+- Updated dependencies [09c4ebe]
+- Updated dependencies [0034944]
+  - @pancakeswap/stable-swap-sdk@2.0.0
+  - @pancakeswap/sdk@6.0.0
+  - @pancakeswap/gauges@2.0.3
+  - @pancakeswap/multicall@3.5.10
+  - @pancakeswap/tokens@0.6.29
+  - @pancakeswap/v3-sdk@3.8.13
+  - @pancakeswap/v4-sdk@0.1.6
+
 ## 6.2.1
 
 ### Patch Changes

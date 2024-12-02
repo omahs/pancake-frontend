@@ -1,5 +1,12 @@
 # @pancakeswap/tokens
 
+## 0.6.29
+
+### Patch Changes
+
+- Updated dependencies [0034944]
+  - @pancakeswap/sdk@6.0.0
+
 ## 0.6.28
 
 ### Patch Changes

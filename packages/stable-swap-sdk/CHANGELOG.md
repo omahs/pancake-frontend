@@ -1,5 +1,16 @@
 # @pancakeswap/stable-swap-sdk
 
+## 2.0.0
+
+### Major Changes
+
+- 09c4ebe: Add cache for stableswap
+- 0034944: Stableswap config connect with API
+
+### Patch Changes
+
+- @pancakeswap/tokens@0.6.29
+
 ## 1.1.4
 
 ### Patch Changes

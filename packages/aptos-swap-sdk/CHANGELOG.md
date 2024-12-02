@@ -1,5 +1,11 @@
 # @pancakeswap/aptos-swap-sdk
 
+## 2.0.0
+
+### Major Changes
+
+- 0034944: Stableswap config connect with API
+
 ## 1.0.6
 
 ### Patch Changes

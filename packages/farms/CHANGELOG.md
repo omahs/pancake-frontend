@@ -1,5 +1,22 @@
 # @pancakeswap/farms
 
+## 2.0.0
+
+### Major Changes
+
+- 0034944: Stableswap config connect with API
+
+### Patch Changes
+
+- Updated dependencies [09c4ebe]
+- Updated dependencies [0034944]
+  - @pancakeswap/stable-swap-sdk@2.0.0
+  - @pancakeswap/sdk@6.0.0
+  - @pancakeswap/price-api-sdk@6.0.0
+  - @pancakeswap/tokens@0.6.29
+  - @pancakeswap/utils@6.0.9
+  - @pancakeswap/v3-sdk@3.8.13
+
 ## 1.0.81
 
 ### Patch Changes
